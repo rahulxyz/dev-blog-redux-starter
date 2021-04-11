@@ -3,7 +3,7 @@ import "./Login.css";
 import operations from 'store/operations';
 import actions from 'store/actions';
 import {connect} from 'react-redux';
-import { act } from "react-dom/test-utils";
+import {withRouter} from "react-router"
 
 const LOGIN = "Login";
 const REGISTER = "Register";
@@ -61,6 +61,12 @@ class Login extends Component {
         this.props.getApp();
     }
 
+    componentDidUpdate(prevProps){
+        const {isAuthorised, history} = this.props;
+        if(prevProps.isAuthorised !== isAuthorised && isAuthorised){
+            history.push("/home");
+        }
+    }
 
 
     render() {
@@ -68,7 +74,7 @@ class Login extends Component {
         const {mydata} = this.props;
         const loginTab = visibleTab === LOGIN ? "tablink tab-select" : "tablink";
         const registerTab = visibleTab === REGISTER ? "tablink tab-select" : "tablink";
-        console.log(mydata);
+        console.log(this.props);
 
         return (
             <section className="login-wrapper">
@@ -126,7 +132,8 @@ class Login extends Component {
 
 const mapStateToProps = (state)=>{
     return {
-      mydata: state.data
+      mydata: state.data,
+      isAuthorised: state.isAuthorised
     }
   }
   
@@ -137,4 +144,4 @@ const mapStateToProps = (state)=>{
   }
   
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Login));

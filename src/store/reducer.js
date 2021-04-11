@@ -1,8 +1,9 @@
 import types from './types';
 
 const initialState = {
-    appStore: true,
-    data: {}
+    user: null,
+    isAuthorised: false,
+    error: ""
 }
 
 function app(state= initialState, action){
@@ -13,6 +14,13 @@ function app(state= initialState, action){
                 ...state,
                 data: action.payload
             };
+        case types.LOGIN_SUCCESS:
+            return {
+                ...state,
+                user: action .payload,
+                isAuthorised: true,
+                error: ""
+            }
 
         default: return state;
     }
