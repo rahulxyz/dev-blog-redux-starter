@@ -3,6 +3,7 @@ import "./Login.css";
 import operations from 'store/operations';
 import actions from 'store/actions';
 import {connect} from 'react-redux';
+import { act } from "react-dom/test-utils";
 
 const LOGIN = "Login";
 const REGISTER = "Register";
@@ -18,7 +19,7 @@ class Login extends Component {
 
         if(visibleTab === REGISTER){
             const registerData = {
-                username: e.target[0].value,
+                name: e.target[0].value,
                 email: e.target[1].value,
                 password: e.target[2].value,
             }
@@ -34,10 +35,17 @@ class Login extends Component {
 
     handleLogin = (loginData)=>{
         console.log(">>>login ", loginData);
+        this.props.login(loginData);
     } 
 
-    handleRegister = (registerData)=>{
+    handleRegister = async (registerData)=>{
         console.log(">>> register", registerData);
+        try{
+            await this.props.register(registerData);
+            this.setState({visibleTab: LOGIN});
+        }catch(error){
+            console.log(">>Error register: ", error);
+        }
     } 
 
     selectTab = (tab) => {
@@ -123,7 +131,9 @@ const mapStateToProps = (state)=>{
   }
   
   const mapDispatchToProps = {
-      getApp: actions.app
+      getApp: actions.app,
+      register: actions.register,
+      login: actions.login
   }
   
 
