@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import "./Home.css";
 import Banner from "components/banner/Banner";
 import BlogList from "components/blogList/BlogList";
-import actions from 'store/actions';
 
 
 class Home extends Component {
