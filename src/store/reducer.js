@@ -4,7 +4,8 @@ const initialState = {
     user: null,
     isAuthorised: false,
     error: "",
-    blogList:[]
+    blogList:[],
+    article:{}
 }
 
 function app(state= initialState, action){
@@ -27,7 +28,11 @@ function app(state= initialState, action){
                 ...state,
                 blogList: action.payload
             }
-
+        case types.ARTICLE_SUCCESS:
+                return {
+                    ...state,
+                    article: action.payload
+                }
         default: return state;
     }
 }

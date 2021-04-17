@@ -5,7 +5,8 @@ const actions = {
     app,
     register,
     login,
-    getBlogList
+    getBlogList,
+    getArticleById
 }
 
 function app(){
@@ -121,6 +122,34 @@ function getBlogList() {
 
     function failure(error) {
         return {type: types.BLOG_LIST_FAILURE, error};
+    }
+}
+
+function getArticleById(id) {
+    return async dispatch =>{
+
+        dispatch(request());
+        try{
+            const response = await operations.getArticleById(id);
+            const data = await response.data.article;
+            
+            dispatch(success(data));
+
+        }catch(error){
+            dispatch(failure(error));
+        }
+    }
+
+    function request() {
+        return {type: types.ARTICLE_REQUEST};
+    }
+
+    function success(payload) {
+        return {type: types.ARTICLE_SUCCESS, payload};
+    }
+
+    function failure(error) {
+        return {type: types.ARTICLE_FAILURE, error};
     }
 }
 

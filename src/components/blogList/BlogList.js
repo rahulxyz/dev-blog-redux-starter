@@ -30,7 +30,7 @@ class BlogList extends Component {
                                 " " +
                                 date.getUTCDate(); */
                             return (
-                                <Link to={`/api/feed/newsFeed/${item._id}`}>
+                                <Link to={`/article/${item._id}`}>
                                     <li key={index}>
                                         <div>
                                             <div className="description">

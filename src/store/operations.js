@@ -5,6 +5,7 @@ const endpoints={
     register: '/users/register',
     login: '/users/login',
     newsFeed: "feed/newsFeed",
+    articleById: (id)=>`/feed/newsFeed/${id}`,
 }
 
 const getApp = ()=>{
@@ -24,12 +25,16 @@ const getBlogList = ()=>{
     return onGet(endpoints.newsFeed, undefined, false);
 }
 
+const getArticleById = (id)=>{
+    return onGet(endpoints.articleById(id), undefined, false);
+}
 
 const operations = {
     getApp,
     register,
     login,
-    getBlogList
+    getBlogList,
+    getArticleById,
 }
 
 export default operations;
