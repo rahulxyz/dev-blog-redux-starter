@@ -1,0 +1,116 @@
+.banner-wrapper {
+    background-color: var(--violet);
+    position: relative;
+    min-height: 450px;
+}
+
+.banner-wrapper > img {
+    position: absolute;
+}
+
+.banner-wrapper img:first-child {
+    top: 30%;
+}
+
+.banner-wrapper img:nth-child(2) {
+    z-index: 20;
+    right: 0;
+}
+
+.banner-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner-content .container {
+    display: flex;
+}
+
+.banner-content .description {
+    max-width: calc(100% - 400px);
+    color: white;
+    font-size: 2rem;
+}
+
+.banner-content .description img {
+    margin-top: 10%;
+}
+
+.banner-content .description h1,
+p {
+    margin: 0;
+}
+
+.banner-content .description .social-icons {
+    margin-top: 8px;
+}
+
+.banner-content .description .social-icons i {
+    margin-right: 16px;
+}
+
+.banner-footer .container {
+    position: relative;
+}
+
+.banner-footer .container img {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-top: -300px;
+    z-index: 10;
+    padding-bottom: 100px;
+}
+
+.banner-footer .container:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100px;
+    border-bottom: 2px solid var(--grayish-blue);
+}
+
+@media (max-width: 1024px) {
+    .banner-content .description {
+        max-width: calc(100% - 300px);
+    }
+
+    .banner-footer .container img {
+        margin-top: -200px;
+        width: 300px;
+    }
+}
+
+@media (max-width: 640px) {
+    .banner-content .description {
+        max-width: 100%;
+    }
+
+    .banner-footer .container img {
+        display: none;
+    }
+
+    .banner-wrapper > img:nth-child(1) {
+        display: none;
+    }
+
+    .banner-footer .container {
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .description img {
+        width: 100px;
+    }
+    .description h1,
+    p {
+        font-size: 1.8rem;
+    }
+    .banner-content .description .social-icons {
+        margin-top: 16px;
+    }
+}

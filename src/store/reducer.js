@@ -3,7 +3,8 @@ import types from './types';
 const initialState = {
     user: null,
     isAuthorised: false,
-    error: ""
+    error: "",
+    blogList:[]
 }
 
 function app(state= initialState, action){
@@ -20,6 +21,11 @@ function app(state= initialState, action){
                 user: action .payload,
                 isAuthorised: true,
                 error: ""
+            };
+        case types.BLOG_LIST_SUCCESS:
+            return {
+                ...state,
+                blogList: action.payload
             }
 
         default: return state;
