@@ -6,6 +6,7 @@ const endpoints={
     login: '/users/login',
     newsFeed: "feed/newsFeed",
     articleById: (id)=>`/feed/newsFeed/${id}`,
+    addBlog: "feed/createArticle"
 }
 
 const getApp = ()=>{
@@ -29,12 +30,17 @@ const getArticleById = (id)=>{
     return onGet(endpoints.articleById(id), undefined, false);
 }
 
+export function addBlog(body){
+    return onPost(endpoints.addBlog, body, undefined, true);
+} 
+
 const operations = {
     getApp,
     register,
     login,
     getBlogList,
     getArticleById,
+    addBlog
 }
 
 export default operations;

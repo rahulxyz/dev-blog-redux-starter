@@ -2,7 +2,7 @@ import types from './types';
 
 const initialState = {
     user: null,
-    isAuthorised: false,
+    isAuthorised: true,
     error: "",
     blogList:[],
     article:{}
